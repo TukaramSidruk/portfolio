@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e5e7eb;
+  --accent: #38bdf8;
+}
+
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --accent: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--card);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+header a {
+  color: var(--text);
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+header a:hover {
+  color: var(--accent);
+}
+
+section {
+  min-height: 100vh;
+  padding: 120px 10%;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero span {
+  color: var(--accent);
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 15px 0;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.skills .bar {
+  background: #334155;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.skills .fill {
+  height: 10px;
+  background: var(--accent);
+  width: 0%;
+  transition: 1s;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--card);
+}
+
+.toggle {
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div><b>MyPortfolio</b></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleTheme()">🌙</span>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Hello, I'm <span>TUKARAM SIDRUK</span></h1>
+  <p>Web Developer | Designer | Programmer</p>
+  <button class="btn" onclick="alert('Thanks for visiting!')">Hire Me</button>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I am a passionate developer who loves building modern, interactive websites.
+      I specialize in HTML, CSS, JavaScript and responsive design.
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <h2>Skills</h2>
+
+  <p>HTML</p>
+  <div class="bar"><div class="fill" data-skill="90"></div></div>
+
+  <p>CSS</p>
+  <div class="bar"><div class="fill" data-skill="85"></div></div>
+
+  <p>JavaScript</p>
+  <div class="bar"><div class="fill" data-skill="75"></div></div>
+
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">Portfolio Website</div>
+    <div class="card">Weather App</div>
+    <div class="card">Todo List</div>
+    <div class="card">E-commerce UI</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="card">
+    <p>Email: yourname@email.com</p>
+    <p>LinkedIn: linkedin.com/in/yourname</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Your Name | All Rights Reserved
+</footer>
+
+<script>
+// Animate skill bars on scroll
+const fills = document.querySelectorAll(".fill");
+
+window.addEventListener("scroll", () => {
+  const skillsSection = document.getElementById("skills");
+  const top = skillsSection.getBoundingClientRect().top;
+
+  if (top < window.innerHeight) {
+    fills.forEach(bar => {
+      bar.style.width = bar.dataset.skill + "%";
+    });
+  }
+});
+
+// Dark/Light mode
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
